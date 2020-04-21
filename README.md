@@ -30,14 +30,15 @@ Considering the size of the series, Jørgen-Olaf needs you to develop a software
 ## USAGE:
 
 ```
->> ./206neutrinos n a h sd
+>> ./206neutrinos -h
+USAGE
+    ./206neutrinos n a h sd
+
+DESCRIPTION
+    n       number of values
+    a       arithmetic mean
+    h       harmonic mean
+    sd      standard deviation
 ```
-
-#### DESCRIPTION
-n       number of values
-a       arithmetic mean
-h       harmonic mean
-sd      standard deviation
-
 
 Author [**Corentin COUTRET-ROZET**](https://github.com/sheiiva) and [**PATRICIA MONFA-MATAS**](https://github.com/patumm)
