@@ -1,4 +1,4 @@
-205IQ
+206neutrinos
 ===
 
 Time:       2 weeks
@@ -10,37 +10,34 @@ Language:   Python
 
 The project
 ----
-Most of the reference curves, such as weight and height cruves, are created using **Gaussian distributions**.These curves appear to correctly describe “normality”, and that is why the **Gaussian distribution** is also called [**normal distribution**](https://en.wikipedia.org/wiki/Normal_distribution).
+**Jørgen-Olaf** is a distinguished nuclear physics researcher in **Hørsholm**. With his assistant, they are studying **neutrinos**, a kind of promising particle, and are trying to prove that these particles can travel faster than light.
 
-IQ tests are calibrated so that the results follow a normal distribution. The interpretation of the resulting IQ obviously depends on the calibration of the test. Most of the time, the mean is equal to 100. The **standard deviation** is usually 15 but can vary *(24 in the Cattell test, for example)*. **IQ values are always between 0 and 200**.
+Given temperature and pressure conditions, they record the speed of some particles under these conditions, modify one parameter, and start again. Almost 11 months of hard work on several hundreds of millionsrecords...
 
-Your psychiatrist, **Dr. Von Humleit**, plans to create his own IQ test, which is supposed to be better suited to the current population than the classical tests from previous centuries. To help him calibrate his test, you have to program the following tasks:
-* Given ***μ*** and ***σ***, plot the density function of the IQ for every integer between 0 and 200.
-* Given ***μ***, ***σ*** and one IQ value, print the percentage of people with an IQ inferior to this value.
-* Given ***μ***, ***σ*** and two IQ values, print the percentage of people with an IQ in between those values.
+They are unable to efficiently store all of these values. For each series of records, they only register:
+* its arithmetical mean
+* its standard deviation
+* its root mean square *(Jørgen-Olaf needs an average speed so that if all the particles travel at this speed, they would have the same total kinetic energy)*
+* its harmonic mean (as a precaution, in case Jørgen-Olaf would need another variable, with a non-quadratic dependency on speed)
+ 
+ 
+Considering the size of the series, Jørgen-Olaf needs you to develop a software that will allow him to update his data in real-time. This program will take **4 numbers as inputs (the number of recorded values, their arithmetic mean, harmonic mean and standard deviation)**, and must:
+* wait for the next value to be written on the standard input
+* print the number of recorded values, their standard deviation, arithmetic mean, root mean squareand harmonic mean
+* return to the first step, except if the keyword **END** is entered.
 
 
 ## USAGE:
 
 ```
->> ./205IQ u s [IQ1] [IQ2]
+>> ./206neutrinos n a h sd
 ```
 
 #### DESCRIPTION
-u       IQ's mean
-s       standard deviation
-IQ1     minimum IQ
-IQ2     maximum IQ
+n       number of values
+a       arithmetic mean
+h       harmonic mean
+sd      standard deviation
 
-# BONUS:
-
-> prerequisite: [`Gnuplot`](http://www.gnuplot.info/) graphical library
-
-```
->> ./205IQ *u* *s* > data
->> cat bonus/drawer.gnu | gnuplot
-```
-
-The graph related to the `data` output file will be plot in an `image.png file`.
 
 Author [**Corentin COUTRET-ROZET**](https://github.com/sheiiva) and [**PATRICIA MONFA-MATAS**](https://github.com/patumm)
