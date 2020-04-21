@@ -10,6 +10,8 @@
 
 
 from sys import argv
+from math import sqrt
+import statistics
 
 
 class Neutrinos():
@@ -19,11 +21,10 @@ class Neutrinos():
     """
 
     def __init__(self):
-        self.tmp = 0
-        # self.n = int(argv[1])
-        # self.a = int(argv[2])
-        # self.h = int(argv[3])
-        # self.sd = int(argv[4])
+        self.n = int(argv[1])
+        self.a = int(argv[2])
+        self.h = int(argv[3])
+        self.sd = int(argv[4])
 
     def getValue(self):
 
@@ -51,9 +52,9 @@ class Neutrinos():
         Compute number of values and print the result.
         """
 
-        value = 0
-
-        print("\tNumber of values:   {}".format(value))
+        self.n += 1
+        
+        print("\tNumber of values:   {}".format(self.n))
 
     def computestdeviation(self):
 
@@ -64,23 +65,24 @@ class Neutrinos():
         value = 0
         print("\tStandard deviation: {:.2f}".format(value))
 
-    def computeAmean(self):
+    def computeAmean(self, value):
 
         """
         Compute arithmetic mean and print the result.
         """
 
-        value = 0
-        print("\tArithmetic mean:    {:.2f}".format(value))
-
-    def computerootsquare(self):
+        self.a = ((self.a * (self.n - 1)) + value) / self.n
+        print("\tArithmetic mean:    {:.2f}".format(self.a))
+        
+    def computerootsquare(self, value):
 
         """
         Compute Root mean square and print the result.
         """
 
-        value = 0
-        print("\tRoot mean square:   {:.2f}".format(value))
+        tmp = (pow(self.sd, 2) + pow(self.a, 2)) * self.n
+        square = sqrt(tmp + pow(value, 2)) / self.n
+        print("\tRoot mean square:   {:.2f}".format(square))
 
     def computeHmean(self):
 
@@ -102,8 +104,8 @@ class Neutrinos():
             value = self.getValue()
             self.computeValuesNbr()
             self.computestdeviation()
-            self.computeAmean()
-            self.computerootsquare()
+            self.computeAmean(value)
+            self.computerootsquare(value)
             self.computeHmean()
             print()
 
