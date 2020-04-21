@@ -15,9 +15,9 @@ def help():
     """
 
     print("USAGE\n"
-          "\t./205IQ u s [IQ1] [IQ2]\n\n"
+          "\t./206neutrinos n a h sd\n\n"
           "DESCRIPTION\n"
-          "\tu\t\tmean\n"
-          "\ts\t\tstandard deviation\n"
-          "\tIQ1\t\tminimum IQ\n"
-          "\tIQ2\t\tmaximum IQ".expandtabs(4))
+          "\tn\t\tnumber of values\n"
+          "\ta\t\tarithmetic mean\n"
+          "\th\t\tharmonic mean\n"
+          "\tsd\t\tstandard deviation".expandtabs(4))
