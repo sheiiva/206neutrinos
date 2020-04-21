@@ -19,10 +19,10 @@ class Neutrinos():
     """
 
     def __init__(self):
-        self.n = int(argv[1])
-        self.a = int(argv[2])
-        self.h = int(argv[3])
-        self.sd = int(argv[4])
+        self._n = int(argv[1])
+        self._a = int(argv[2])
+        self._h = int(argv[3])
+        self._sd = int(argv[4])
 
     def getValue(self):
 
@@ -52,16 +52,19 @@ class Neutrinos():
 
         value = 0
 
-        print("\tNumber of values:   {}".format(value))
+        print("\tNumber of values:   {}".format(self._n))
 
-    def computestdeviation(self):
+    def computestdeviation(self, inputNb):
 
         """
         Compute standard deviation and print the result.
         """
 
-        value = np.standard(self.sd)
-        print("\tStandard deviation: {:.2f}".format(value))
+        self._sd = np.sqrt(
+           ((((self._sd**2) + (self._a**2)) * (self._n-1)) + (inputNb**2)) / self._n
+           - ((((self._a * (self._n-1)) + inputNb) / self._n)**2)
+        )
+        print("\tStandard deviation: {:.2f}".format(self._sd))
 
     def computeAmean(self):
 
@@ -81,13 +84,13 @@ class Neutrinos():
         value = 0
         print("\tRoot mean square:   {:.2f}".format(value))
 
-    def computeHmean(self):
+    def computeHmean(self, inputNb):
 
         """
         Compute Harmonic mean and print the result.
         """
 
-        value = 0
+        value = self._n / ((1 / inputNb) + (self._n / self._h))
         print("\tHarmonic mean:      {:.2f}".format(value))
 
 
@@ -100,10 +103,10 @@ class Neutrinos():
         while (1):
             value = self.getValue()
             self.computeValuesNbr()
-            self.computestdeviation()
+            self.computestdeviation(value)
             self.computeAmean()
             self.computerootsquare()
-            self.computeHmean()
+            self.computeHmean(value)
             print()
 
         return 0
