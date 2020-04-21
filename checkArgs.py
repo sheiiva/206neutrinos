@@ -25,11 +25,22 @@ class ArgumentManager():
 
             try:
                 int(value)
-            except ValueError:
-                return False
+            except:
+                False
             else:
                 return True
-
+            
+        if (len(argv) != 5):
+            print("Wrong number of arguments. Please run with -h.")
+            return 84
+        for i in range (1, len(argv)):
+            if not isNum(argv[i]):
+                print("Arguments should be integers. Please run with -h.")
+                return 84
+            if int(argv[i]) < 0:
+                print("Arguments should be positive. Please run with -h.")
+                return (84)
+            
         return isNum(0)
 
     def needHelp(self, argv):
