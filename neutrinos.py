@@ -25,6 +25,8 @@ class Neutrinos():
         self._a = int(argv[2])
         self._h = int(argv[3])
         self._sd = int(argv[4])
+        self._oldSd = 0
+        self._oldA= 0
         self._square = 0
 
     def getValue(self):
@@ -64,6 +66,7 @@ class Neutrinos():
         Compute standard deviation and print the result.
         """
 
+        self._oldSd = self._sd
         rootMeanSquare = ((self._sd**2) + (self._a**2)) * (self._n-1)
         self._sd = np.sqrt(
            (rootMeanSquare + (inputNb**2)) / self._n
@@ -78,6 +81,7 @@ class Neutrinos():
         Compute arithmetic mean and print the result.
         """
 
+        self._oldA = self._a
         self._a = ((self._a * (self._n - 1)) + value) / self._n
 
         print("\tArithmetic mean:    {:.2f}".format(self._a))
@@ -88,8 +92,8 @@ class Neutrinos():
         Compute Root mean square and print the result.
         """
 
-        tmp = (pow(self._sd, 2) + pow(self._a, 2)) * (self._n - 1)
-        self._square = sqrt(tmp + pow(value, 2)) / self._n
+        tmp = (pow(self._oldSd, 2) + pow(self._oldA, 2)) * (self._n - 1)
+        self._square = sqrt((tmp + pow(value, 2)) / self._n)
 
         print("\tRoot mean square:   {:.2f}".format(self._square))
 
