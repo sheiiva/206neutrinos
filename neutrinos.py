@@ -8,7 +8,7 @@
 #                                          #
 ############################################
 
-
+import numpy as np
 from sys import argv
 
 
@@ -19,11 +19,10 @@ class Neutrinos():
     """
 
     def __init__(self):
-        self.tmp = 0
-        # self.n = int(argv[1])
-        # self.a = int(argv[2])
-        # self.h = int(argv[3])
-        # self.sd = int(argv[4])
+        self.n = int(argv[1])
+        self.a = int(argv[2])
+        self.h = int(argv[3])
+        self.sd = int(argv[4])
 
     def getValue(self):
 
@@ -34,7 +33,7 @@ class Neutrinos():
         try:
             ret = input("Enter next value: ")
             retint = int(ret)
-        except OSError:
+        except KeyboardInterrupt:
             exit(0)
         except ValueError:
             if (ret == "END"):
@@ -61,7 +60,7 @@ class Neutrinos():
         Compute standard deviation and print the result.
         """
 
-        value = 0
+        value = np.standard(self.sd)
         print("\tStandard deviation: {:.2f}".format(value))
 
     def computeAmean(self):
