@@ -25,6 +25,7 @@ class Neutrinos():
         self.a = int(argv[2])
         self.h = int(argv[3])
         self.sd = int(argv[4])
+        self.square = 0
 
     def getValue(self):
 
@@ -80,9 +81,9 @@ class Neutrinos():
         Compute Root mean square and print the result.
         """
 
-        tmp = (pow(self.sd, 2) + pow(self.a, 2)) * self.n
-        square = sqrt(tmp + pow(value, 2)) / self.n
-        print("\tRoot mean square:   {:.2f}".format(square))
+        tmp = (pow(self.sd, 2) + pow(self.a, 2)) * self.n - 1
+        self.square = sqrt(tmp + pow(value, 2)) / self.n
+        print("\tRoot mean square:   {:.2f}".format(self.square))
 
     def computeHmean(self):
 
