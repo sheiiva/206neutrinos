@@ -66,6 +66,8 @@ class Neutrinos():
         Compute standard deviation and print the result.
         """
 
+        if self._n == 0:
+            exit(84)        
         self._oldSd = self._sd
         rootMeanSquare = ((self._sd**2) + (self._a**2)) * (self._n-1)
         self._sd = np.sqrt(
@@ -80,7 +82,8 @@ class Neutrinos():
         """
         Compute arithmetic mean and print the result.
         """
-
+        if self._n == 0:
+            exit(84)
         self._oldA = self._a
         self._a = ((self._a * (self._n - 1)) + value) / self._n
 
@@ -92,6 +95,8 @@ class Neutrinos():
         Compute Root mean square and print the result.
         """
 
+        if self._n == 0:
+            exit(84)
         tmp = (pow(self._oldSd, 2) + pow(self._oldA, 2)) * (self._n - 1)
         self._square = sqrt((tmp + pow(value, 2)) / self._n)
 
@@ -103,7 +108,8 @@ class Neutrinos():
         Compute Harmonic mean and print the result.
         """
         
-        self._h = self._n /((1 / inputNb) + ((self._n - 1) / self._h))
+        if inputNb != 0 and self._h != 0:
+            self._h = self._n /((1 / inputNb) + ((self._n - 1) / self._h))
 
         print("\tHarmonic mean:      {:.2f}".format(self._h))
 
